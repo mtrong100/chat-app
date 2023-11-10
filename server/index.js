@@ -27,13 +27,7 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "https://chat-app-drab-eight-38.vercel.app/",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-});
+const io = new Server(server);
 
 app.use(cors(), {
   cors: {
