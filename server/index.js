@@ -35,7 +35,13 @@ const io = new Server(server, {
   },
 });
 
-app.use(cors());
+app.use(cors(), {
+  cors: {
+    origin: "https://chat-app-drab-eight-38.vercel.app/",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 /* Socket IO */
 let onlineUsers = [];
