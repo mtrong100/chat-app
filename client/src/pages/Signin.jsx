@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
+import { BASE_URL } from "../utils/constant";
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -39,7 +40,7 @@ const Signin = () => {
     if (!isValid) return;
 
     try {
-      const res = await axios.post("/api/auth/signin", values);
+      const res = await axios.post(`${BASE_URL}/auth/signin`, values);
       const data = await res.data;
       if (!data) return;
 

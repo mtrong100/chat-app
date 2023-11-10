@@ -5,12 +5,13 @@ import { BiSolidVideo } from "react-icons/bi";
 import useSWR from "swr";
 import { checkUserOnline, fetcher } from "../utils/helper";
 import { useSelector } from "react-redux";
+import { BASE_URL } from "../utils/constant";
 
 const Header = ({ receiverId }) => {
   const { onlineUsers } = useSelector((state) => state.socket);
   const isOnline = checkUserOnline(onlineUsers, receiverId);
   const { data, error, isLoading } = useSWR(
-    `/api/user/find/${receiverId}`,
+    `${BASE_URL}/user/find/${receiverId}`,
     fetcher
   );
 

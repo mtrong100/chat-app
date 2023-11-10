@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Skeleton from "./Skeleton";
 import axios from "axios";
 import { useChat } from "../context/chat-context";
+import { BASE_URL } from "../utils/constant";
 
 const UserChat = ({ data, currentUserId }) => {
   const { members } = data;
@@ -15,7 +16,7 @@ const UserChat = ({ data, currentUserId }) => {
       if (!friendId) return;
 
       try {
-        const res = await axios.get(`/api/user/find/${friendId}`);
+        const res = await axios.get(`${BASE_URL}/user/find/${friendId}`);
         const data = await res.data;
         setUser(data);
       } catch (error) {

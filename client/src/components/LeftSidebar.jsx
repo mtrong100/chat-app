@@ -5,12 +5,13 @@ import { fetcher } from "../utils/helper";
 import useOnChange from "../hooks/useOnchange";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../context/auth-context";
+import { BASE_URL } from "../utils/constant";
 
 const LeftSidebar = () => {
   const { currentUser } = useAuth();
   const { handleChange, value } = useOnChange();
   const { data, error, isLoading } = useSWR(
-    `/api/chat/${currentUser?._id}`,
+    `${BASE_URL}/chat/${currentUser?._id}`,
     fetcher
   );
 

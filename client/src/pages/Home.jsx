@@ -8,6 +8,7 @@ import Message from "../components/Message";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { storeMessageValue, storeMessages } from "../redux/slices/globalSlice";
+import { BASE_URL } from "../utils/constant";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Home = () => {
   const scrollRef = useRef();
 
   const { data, error, isLoading } = useSWR(
-    `/api/message/${currentChat?.chatId}`,
+    `${BASE_URL}/message/${currentChat?.chatId}`,
     fetcher
   );
 
@@ -67,7 +68,7 @@ const Home = () => {
     };
 
     try {
-      const res = await axios.post("/api/message/create", message);
+      const res = await axios.post(`${BASE_URL}/message/create`, message);
       const data = await res.data;
 
       setArrivalMessage(data);

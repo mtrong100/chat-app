@@ -68,10 +68,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 // API routes
-app.use("/api/auth", authRouter);
-app.use("/api/user", userRouter);
-app.use("/api/chat", chatRouter);
-app.use("/api/message", messageRouter);
+app.use("/auth", authRouter);
+app.use("/user", userRouter);
+app.use("/chat", chatRouter);
+app.use("/message", messageRouter);
 
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

@@ -3,8 +3,8 @@ import { io } from "socket.io-client";
 import { useAuth } from "./auth-context";
 import { useDispatch, useSelector } from "react-redux";
 import { storeOnlineUsers, storeSocket } from "../redux/slices/socketSlice";
+import { BASE_URL } from "../utils/constant";
 
-const ENDPOINT = "https://chat-app-api-rust.vercel.app";
 const ChatContext = createContext();
 
 const ChatProvider = ({ children }) => {
@@ -22,7 +22,7 @@ const ChatProvider = ({ children }) => {
 
   // Connect socket io for client
   useEffect(() => {
-    const newSocket = io(ENDPOINT);
+    const newSocket = io(BASE_URL);
     dispatch(storeSocket(newSocket));
 
     return () => {

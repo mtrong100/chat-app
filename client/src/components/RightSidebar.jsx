@@ -6,12 +6,13 @@ import { useAuth } from "../context/auth-context";
 import axios from "axios";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
+import { BASE_URL } from "../utils/constant";
 
 const RightSidebar = () => {
   const { currentUser } = useAuth();
   const { onlineUsers } = useSelector((state) => state.socket);
   const [users, setUsers] = useState([]);
-  const { data, error, isLoading } = useSWR("/api/user/all", fetcher);
+  const { data, error, isLoading } = useSWR(`${BASE_URL}/user/all`, fetcher);
 
   useEffect(() => {
     if (data) {
@@ -61,7 +62,7 @@ function UserItem({ data, senderId, onlineUsers }) {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("/api/chat/create", {
+      const res = await axios.post(`${BASE_URL}/chat/create`, {
         receiverId,
         senderId,
       });

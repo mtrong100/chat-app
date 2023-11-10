@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/auth-context";
+import { BASE_URL } from "../utils/constant";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required"),
@@ -40,7 +41,7 @@ const Signup = () => {
     if (!isValid) return;
 
     try {
-      const res = await axios.post("/api/auth/signup", values);
+      const res = await axios.post(`${BASE_URL}/auth/signup`, values);
       const data = await res.data;
 
       if (!data) return;
