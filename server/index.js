@@ -26,9 +26,6 @@ mongoose
 const port = process.env.PORT || 5000;
 
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
-
 app.use(
   cors({
     origin: "https://chat-app-drab-eight-38.vercel.app",
@@ -36,6 +33,9 @@ app.use(
     credentials: true,
   })
 );
+
+const server = http.createServer(app);
+const io = new Server(server);
 
 /* Socket IO */
 let onlineUsers = [];
