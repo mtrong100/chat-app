@@ -23,9 +23,11 @@ const ChatProvider = ({ children }) => {
   // Connect socket io for client
   useEffect(() => {
     const newSocket = io(BASE_URL);
+    console.log("Socket Connection Established");
     dispatch(storeSocket(newSocket));
 
     return () => {
+      console.log("Socket Disconnected");
       newSocket.disconnect();
     };
   }, [dispatch]);
