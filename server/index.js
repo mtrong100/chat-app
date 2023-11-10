@@ -31,12 +31,15 @@ app.use(
     origin: "https://chat-app-drab-eight-38.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "https://chat-app-drab-eight-38.vercel.app",
+    methods: ["GET", "POST"],
+  },
+});
 
 /* Socket IO */
 let onlineUsers = [];
@@ -69,10 +72,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 // API routes
-app.use("/auth", authRouter);
-app.use("/user", userRouter);
-app.use("/chat", chatRouter);
-app.use("/message", messageRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
+app.use("/api/chat", chatRouter);
+app.use("/api/message", messageRouter);
 
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
