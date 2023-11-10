@@ -4,7 +4,7 @@ import { useAuth } from "./auth-context";
 import { useDispatch, useSelector } from "react-redux";
 import { storeOnlineUsers, storeSocket } from "../redux/slices/socketSlice";
 
-const ENDPOINT = "chat-app-api-rust.vercel.app";
+const ENDPOINT = "https://chat-app-api-rust.vercel.app";
 const ChatContext = createContext();
 
 const ChatProvider = ({ children }) => {
