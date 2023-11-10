@@ -1,2 +1,2 @@
-export const BASE_URL = "https://chat-app-api-rust.vercel.app/api";
+export const BASE_URL = "http://localhost:5000/api";
 const ENDPOINT = "http://localhost:5000";

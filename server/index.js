@@ -26,32 +26,10 @@ mongoose
 const port = process.env.PORT || 5000;
 
 const app = express();
-app.use(
-  cors({
-    origin: "https://chat-app-drab-eight-38.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "access-control-allow-origin",
-    ],
-  })
-);
+app.use(cors());
 
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "https://chat-app-drab-eight-38.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "access-control-allow-origin",
-    ],
-  },
-});
+const io = new Server(server);
 
 /* Socket IO */
 let onlineUsers = [];
