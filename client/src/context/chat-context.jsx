@@ -4,6 +4,7 @@ import { useAuth } from "./auth-context";
 import { useDispatch, useSelector } from "react-redux";
 import { storeOnlineUsers, storeSocket } from "../redux/slices/socketSlice";
 
+const ENDPOINT = "chat-app-api-rust.vercel.app";
 const ChatContext = createContext();
 
 const ChatProvider = ({ children }) => {
@@ -21,7 +22,7 @@ const ChatProvider = ({ children }) => {
 
   // Connect socket io for client
   useEffect(() => {
-    const newSocket = io("localhost:5000");
+    const newSocket = io(ENDPOINT);
     dispatch(storeSocket(newSocket));
 
     return () => {
