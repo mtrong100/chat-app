@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://chat-app-api-rust.vercel.app",
+        target: "https://chat-app-api-rust.vercel.app/",
         secure: false,
       },
     },
