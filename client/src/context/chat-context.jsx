@@ -22,7 +22,14 @@ const ChatProvider = ({ children }) => {
 
   // Connect socket io for client
   useEffect(() => {
-    const newSocket = io(BASE_URL);
+    const newSocket = io(BASE_URL, {
+      withCredentials: true,
+      extraHeaders: {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin":
+          "https://chat-app-drab-eight-38.vercel.app",
+      },
+    });
 
     console.log("Socket Connection Established");
     dispatch(storeSocket(newSocket));

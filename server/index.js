@@ -31,6 +31,7 @@ app.use(
     origin: "https://chat-app-drab-eight-38.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 const server = http.createServer(app);
@@ -38,6 +39,8 @@ const io = new Server(server, {
   cors: {
     origin: "https://chat-app-drab-eight-38.vercel.app",
     methods: ["GET", "POST"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   },
 });
 
