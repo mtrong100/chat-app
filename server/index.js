@@ -28,9 +28,10 @@ const port = process.env.PORT || 5000;
 const app = express();
 app.use(
   cors({
-    origin: "*",
+    origin: "https://chat-app-drab-eight-38.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
